@@ -1,0 +1,46 @@
+import { useNavigate } from "react-router-dom";
+
+interface SidebarProps {
+  sidebarItem: {
+    name: string;
+    childs: {
+      child: string;
+    }[];
+  };
+}
+const Sidebar = ({ sidebarItem }: SidebarProps) => {
+  const navigate = useNavigate();
+  const goTo = () => {
+    navigate("/settings");
+  };
+  return (
+    <div className="h-screen bg-gray-100">
+      <h1 className="text-xl bg-zinc-900 tracking-wider text-zinc-200 font-semibold cursor-pointer hover:bg-gray-700 hover:text-cyan-200 px-5 py-5">
+        {sidebarItem.name.toUpperCase()}
+      </h1>
+      <div className=" flex flex-col">
+        <div className="pt-3 h-auto">
+          {sidebarItem.childs.map((item, index) => (
+            <ul key={index}>
+              <li className="cursor-pointer pl-5 py-2 hover:bg-gray-700 hover:text-cyan-200">
+                {item.child}
+              </li>
+            </ul>
+          ))}
+        </div>
+        <div className="mt-96">
+          <ul>
+            <li
+              onClick={()=>goTo()}
+              className="cursor-pointer pl-5 py-2 hover:bg-gray-700 hover:text-cyan-200"
+            >
+              Settings
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Sidebar;
