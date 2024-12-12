@@ -57,7 +57,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex">
-      <div className="Sidebar h-screen w-1/5">
+      <div className="Sidebar h-screen">
         <Sidebar sidebarItem={sidebarItem} />
       </div>
       <div className="w-full">

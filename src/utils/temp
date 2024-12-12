@@ -1,0 +1,28 @@
+import supabase from "../utils/supabase";
+
+const signUpNewUser = async () => {
+  const { data, error } = await supabase.auth.signUp({
+    email: 'valid.email@supabase.io',
+    password: 'example-password',
+    options: {
+      emailRedirectTo: 'https://example.com/welcome',
+    },
+  });
+};
+
+const signInWithEmail = async () => {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: 'valid.email@supabase.io',
+    password: 'example-password',
+  });
+};
+
+const resetUserPassword = async (email:string) => {
+  await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: 'http://example.com/account/update-password',
+  });
+};
+
+// Usage
+// resetUserPassword('valid.email@supabase.io');
+export { signUpNewUser, signInWithEmail, resetUserPassword };

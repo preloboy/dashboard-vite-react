@@ -14,12 +14,12 @@ const Sidebar = ({ sidebarItem }: SidebarProps) => {
     navigate("/settings");
   };
   return (
-    <div className="h-screen bg-gray-100">
-      <h1 className="text-xl bg-zinc-900 tracking-wider text-zinc-200 font-semibold cursor-pointer hover:bg-gray-700 hover:text-cyan-200 px-5 py-5">
+    <div className="h-screen min-w-48 bg-gray-100">
+      <h1 className="text-lg tracking-wide font-semibold cursor-pointer hover:bg-gray-700 hover:text-cyan-200 px-5 py-5">
         {sidebarItem.name.toUpperCase()}
       </h1>
       <div className=" flex flex-col">
-        <div className="pt-3 h-auto">
+        <div className="">
           {sidebarItem.childs.map((item, index) => (
             <ul key={index}>
               <li className="cursor-pointer pl-5 py-2 hover:bg-gray-700 hover:text-cyan-200">

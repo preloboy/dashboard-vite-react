@@ -1,10 +1,12 @@
 import './App.css'
-
-import AppRoutes from './AppRoutes';
+import Auth from './components/auth/Auth';
+import { AuthProvider } from './providers/AuthProvider';
 
 export default function App() {
-  
+
   return (
-    <AppRoutes />
+    <AuthProvider>
+      <Auth />
+    </AuthProvider>
   )
 }
