@@ -1,3 +1,4 @@
+import { Session, User } from "@supabase/supabase-js";
 import { createContext, useContext, ReactNode, useState } from "react";
 
 interface AuthProviderProps {
@@ -7,16 +8,19 @@ interface AuthProviderProps {
 interface AuthContextType {
   user: any;
   setUser: (user: any) => void;
+  session: any;
+  setSession: (session: any) => void;
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  
-  const [user, setUser] = useState<AuthContextType | null >(null);
+
+  const [user, setUser] = useState<User | null>(null);
+  const [session, setSession] = useState<Session | null>(null)
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, session, setSession }}>
       {children}
     </AuthContext.Provider>
   );
