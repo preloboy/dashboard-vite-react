@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Navbar from "./elements/Navbar";
 import Sidebar from "./elements/Sidebar";
+import { useAuth } from "../providers/AuthProvider";
 
 interface Child {
   child: string;
@@ -14,6 +15,8 @@ interface DashboardProps {
 }
 
 const Dashboard = () => {
+
+  const {user} = useAuth()
 
   const navItem = [
     {
