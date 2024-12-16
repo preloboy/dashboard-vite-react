@@ -8,18 +8,17 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<any | null>(null);
-  const { user, setUser, setSession } = useAuth();
+  const { setUser, setSession } = useAuth();
 
   const signIn = async (e: React.FormEvent) => {
     e.preventDefault
     await supabase.auth.signInWithPassword({ email, password })
       .then((response: AuthResponse) => {
         if (response.data != null) {
-          console.log(response.data.user);
+          console.log('User',response.data.user);
           setUser(response.data.user)
           setSession(response.data.session)
           setError(null)
-          console.log(user);
         } else if (response.error) {
           setError(response.error)
         } else {

@@ -9,11 +9,11 @@ const Auth = () => {
   const { user, setUser } = useAuth();
 
   useEffect(() => {
-    const session = supabase.auth.getSession()
-      .then((value) => {
-        setUser(value.data.session?.user)
-        console.log("Session", value.data.session);
-      })
+    // const session = supabase.auth.getSession()
+    //   .then((value) => {
+    //     setUser(value.data.session?.user)
+    //     console.log("Session", value.data.session);
+    //   })
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
         setUser(session.user);

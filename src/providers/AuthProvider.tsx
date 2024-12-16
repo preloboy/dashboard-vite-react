@@ -1,18 +1,8 @@
 import { Session, User } from "@supabase/supabase-js";
 import { createContext, useContext, ReactNode, useState } from "react";
+import { AuthContextType, AuthProviderProps } from "../Models/AuthInterface";
+import { AuthContext } from "../contexts/AuthContext";
 
-interface AuthProviderProps {
-  children: ReactNode;
-}
-
-interface AuthContextType {
-  user: any;
-  setUser: (user: any) => void;
-  session: any;
-  setSession: (session: any) => void;
-}
-
-const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
 

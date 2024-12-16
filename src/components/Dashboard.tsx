@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "./elements/Navbar";
 import Sidebar from "./elements/Sidebar";
 import { useAuth } from "../providers/AuthProvider";
+import supabase from "../utils/supabase";
 
 interface Child {
   child: string;
@@ -16,7 +17,7 @@ interface DashboardProps {
 
 const Dashboard = () => {
 
-  const {user} = useAuth()
+  const { user } = useAuth()
 
   const navItem = [
     {
@@ -52,11 +53,20 @@ const Dashboard = () => {
       ]
     }
   ];
-  
+
+  const [error, setError] = useState(null)
   const [sidebarItem, setSidebarItem] = useState(navItem[0]);
   const getSidebarItem = (item: NavItem) => {
     setSidebarItem(item);
   };
+
+  // const [screens, setScreens] = useState(null)
+
+  
+
+  useEffect(() => {
+    // fetchScreens()
+  })
 
   return (
     <div className="flex">

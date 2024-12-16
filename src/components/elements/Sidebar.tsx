@@ -19,8 +19,7 @@ const Sidebar = ({ sidebarItem }: SidebarProps) => {
 
     const logout = async() =>{
       await supabase.auth.signOut()
-      .then(value=>{
-        console.log(value.error?.message);
+      .then(()=>{
         setUser(null)
         setSession(null)
       })
