@@ -1,6 +1,6 @@
 import { Session, User } from "@supabase/supabase-js";
-import { createContext, useContext, ReactNode, useState } from "react";
-import { AuthContextType, AuthProviderProps } from "../Models/AuthInterface";
+import { useContext, useState } from "react";
+import { AuthProviderProps } from "../Models/AuthInterface";
 import { AuthContext } from "../contexts/AuthContext";
 
 

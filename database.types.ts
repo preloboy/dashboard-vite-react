@@ -35,7 +35,7 @@ export type Database = {
           allowed_role: string
           created_at: string
           id: number
-          menu_id: number | null
+          menu_id: number
           screen_name: string
           screen_status: boolean
         }
@@ -43,7 +43,7 @@ export type Database = {
           allowed_role?: string
           created_at?: string
           id?: number
-          menu_id?: number | null
+          menu_id: number
           screen_name?: string
           screen_status: boolean
         }
@@ -51,7 +51,7 @@ export type Database = {
           allowed_role?: string
           created_at?: string
           id?: number
-          menu_id?: number | null
+          menu_id?: number
           screen_name?: string
           screen_status?: boolean
         }

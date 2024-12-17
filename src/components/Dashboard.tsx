@@ -3,6 +3,7 @@ import Navbar from "./elements/Navbar";
 import Sidebar from "./elements/Sidebar";
 import { useAuth } from "../providers/AuthProvider";
 import supabase from "../utils/supabase";
+import { useDatabase } from "../providers/DataProvider";
 
 interface Child {
   child: string;
@@ -54,28 +55,34 @@ const Dashboard = () => {
     }
   ];
 
-  const [error, setError] = useState(null)
   const [sidebarItem, setSidebarItem] = useState(navItem[0]);
   const getSidebarItem = (item: NavItem) => {
     setSidebarItem(item);
   };
 
-  // const [screens, setScreens] = useState(null)
-
-  
+  const { index, screens, menuList } = useDatabase()
 
   useEffect(() => {
-    // fetchScreens()
+    // console.log('Screens Avaiable',screens);
+
   })
+
 
   return (
     <div className="flex">
       <div className="Sidebar h-screen">
-        <Sidebar sidebarItem={sidebarItem} />
+        <Sidebar />
       </div>
       <div className="w-full">
-        <Navbar navItem={navItem} sendDataToParent={getSidebarItem} />
-        <div className="px-5 pt-5">Body</div>
+        <Navbar menuList={menuList} />
+        <div className="px-5 pt-5">
+          <h1>This is Test</h1>
+          {menuList.map(item => (
+            <ul key={item.id}>
+              <li>{item.menu_name}</li>
+            </ul>
+          ))}
+        </div>
       </div>
     </div>
   );
