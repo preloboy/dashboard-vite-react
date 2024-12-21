@@ -3,9 +3,9 @@ import { hasPermission } from "./utils/permissions";
 import { useAuth } from "./providers/AuthProvider";
 import Dashboard from "./components/pages/Dashboard";
 import Analytics from "./components/pages/Analytics";
-import Settings from "./components/pages/Settings";
 import Overview from "./components/pages/Overview";
 import Performance from "./components/pages/Performance";
+import Settings from "./components/Settings";
 
 const AppRoutes = () => {
   const { user } = useAuth()

@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { Menu_List, Screen } from "../../Models/DataInterface";
 import { useDatabase } from "../../providers/DataProvider";
+import { useNavigate } from "react-router";
 
 interface DashboardProps {
   menuList: Menu_List[];
 }
 
 const Navbar = ({ menuList }: DashboardProps) => {
+
+  const navigate = useNavigate()
   const { setIndex, fetchScreens, getTitle } = useDatabase()
 
-  const hitIndex= (index:string)=>{
+  const hitIndex= (item: Menu_List)=>{
+    const index = item.id.toString()
+    navigate(item.path)
     setIndex(index),
     fetchScreens(index)
     getTitle(index)
@@ -21,7 +26,7 @@ const Navbar = ({ menuList }: DashboardProps) => {
         <ul key={item.id} className="">
           <li
             className="text-lg font-light cursor-pointer hover:bg-gray-700 hover:text-cyan-200 px-4 py-1 rounded-md"
-            onClick={() =>hitIndex(item.id.toString()) }
+            onClick={() =>hitIndex(item) }
           >
             {item.menu_name}
           </li>
