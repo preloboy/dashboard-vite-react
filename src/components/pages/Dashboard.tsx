@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import Navbar from "./elements/Navbar";
-import Sidebar from "./elements/Sidebar";
-import { useAuth } from "../providers/AuthProvider";
-import supabase from "../utils/supabase";
-import { useDatabase } from "../providers/DataProvider";
+import Navbar from "../elements/Navbar";
+import Sidebar from "../elements/Sidebar";
+import { useAuth } from "../../providers/AuthProvider";
+import supabase from "../../utils/supabase";
+import { useDatabase } from "../../providers/DataProvider";
+import { Outlet } from "react-router";
 
 interface Child {
   child: string;
@@ -76,12 +77,7 @@ const Dashboard = () => {
       <div className="w-full">
         <Navbar menuList={menuList} />
         <div className="px-5 pt-5">
-          <h1>This is Test</h1>
-          {menuList.map(item => (
-            <ul key={item.id}>
-              <li>{item.menu_name}</li>
-            </ul>
-          ))}
+          <Outlet />
         </div>
       </div>
     </div>
