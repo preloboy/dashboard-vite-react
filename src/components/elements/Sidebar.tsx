@@ -5,16 +5,13 @@ import { Menu_List, Screen } from "../../Models/DataInterface";
 import { useEffect, useState } from "react";
 import { useDatabase } from "../../providers/DataProvider";
 
-interface SidebarProps {
-  screens: Screen[]
-}
+
 const Sidebar = () => {
+
   const navigate = useNavigate();
-  const goTo = () => {
-    navigate("/settings");
-  };
+
   const { user, setUser, setSession } = useAuth()
-  const {title, setIndex, screens} = useDatabase()
+  const { title, setIndex, screens } = useDatabase()
 
   const logout = async () => {
     await supabase.auth.signOut()
@@ -24,10 +21,12 @@ const Sidebar = () => {
       })
   }
 
-  useEffect(()=>{
-    console.log("Screens",screens);
-    
-  })
+  const goTo = (item: Screen) => {
+    setIndex(item.menu_id.toString())
+    navigate(item.path)
+    console.log("goTo() Test", item.path, item.menu_id);
+
+  }
 
   return (
     <div className="h-screen min-w-48 bg-gray-100">
@@ -41,7 +40,7 @@ const Sidebar = () => {
           {screens.map((item) => (
             <ul key={item.id}>
               <li
-                onClick={() => setIndex(item.menu_id.toString())}
+                onClick={() => goTo(item)}
                 className="cursor-pointer pl-5 py-2 hover:bg-gray-700 hover:text-cyan-200">
                 {item.screen_name}
               </li>
@@ -57,7 +56,6 @@ const Sidebar = () => {
               Logout
             </li>
             <li
-              onClick={() => goTo()}
               className="cursor-pointer pl-5 py-2 hover:bg-gray-700 hover:text-cyan-200"
             >
               Settings
