@@ -12,6 +12,7 @@ export interface DatabaseContextType {
     menuList: Menu_List[],
     screens: Screen[];
     fetchScreens: (index:string) => void;
+    fetchMenu: () => void;
 }
 
 export interface DatabaseProviderProps {

@@ -4,19 +4,18 @@ import { useAuth } from "../../providers/AuthProvider";
 import Login from "./components/Login";
 import supabase from "../../utils/supabase";
 import { useEffect } from "react";
+import { useDatabase } from "../../providers/DataProvider";
 
 const Auth = () => {
   const { user, setUser } = useAuth();
+  const { fetchScreens, fetchMenu } = useDatabase();
 
   useEffect(() => {
-    // const session = supabase.auth.getSession()
-    //   .then((value) => {
-    //     setUser(value.data.session?.user)
-    //     console.log("Session", value.data.session);
-    //   })
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
         setUser(session.user);
+        fetchMenu();
+        fetchScreens('1');
       } else {
         setUser(null);
       }
