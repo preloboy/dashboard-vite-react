@@ -11,7 +11,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const { user, setUser, setSession } = useAuth()
-  const { title, setIndex, screens } = useDatabase()
+  const { index, title, setIndex, screens } = useDatabase()
 
   const logout = async () => {
     await supabase.auth.signOut()
@@ -22,10 +22,8 @@ const Sidebar = () => {
   }
 
   const goTo = (item: Screen) => {
-    setIndex(item.menu_id.toString())
     navigate(item.path)
     console.log("goTo() Test", item.path, item.menu_id);
-
   }
 
   return (
@@ -33,6 +31,7 @@ const Sidebar = () => {
       <h1 className="text-lg tracking-wide font-semibold cursor-pointer hover:bg-gray-700 hover:text-cyan-200 px-5 py-5">
         {title}
         <p>{user.email}</p>
+        <p>{index}</p>
       </h1>
       <div className=" flex flex-col">
         <div className="">

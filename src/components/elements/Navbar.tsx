@@ -12,12 +12,13 @@ const Navbar = ({ menuList }: DashboardProps) => {
   const navigate = useNavigate()
   const { setIndex, fetchScreens, getTitle } = useDatabase()
 
-  const hitIndex= (item: Menu_List)=>{
+  const hitIndex = (item: Menu_List) => {
     const index = item.id.toString()
-    navigate(item.path)
-    setIndex(index),
-    fetchScreens(index)
+    console.log(item.path);
+    setIndex(index)
     getTitle(index)
+    navigate(item.path)
+    fetchScreens(index)
   }
 
   return (
@@ -26,7 +27,7 @@ const Navbar = ({ menuList }: DashboardProps) => {
         <ul key={item.id} className="">
           <li
             className="text-lg font-light cursor-pointer hover:bg-gray-700 hover:text-cyan-200 px-4 py-1 rounded-md"
-            onClick={() =>hitIndex(item) }
+            onClick={() => hitIndex(item)}
           >
             {item.menu_name}
           </li>

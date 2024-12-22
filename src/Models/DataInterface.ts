@@ -6,7 +6,7 @@ export type Menu_List = Database['public']['Tables']['menu_list']['Row']
 
 export interface DatabaseContextType {
     title : string,
-    index: string | undefined,
+    index: string,
     setIndex: (index: string) => void,
     getTitle: (index: string) => void,
     menuList: Menu_List[],

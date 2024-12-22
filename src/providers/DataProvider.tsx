@@ -19,19 +19,14 @@ export const DatabaseProvider: React.FC<DatabaseProviderProps> = ({ children }) 
     }
 
     const fetchScreens = async (index: string) => {
-        const l_screens = sessionStorage.getItem('screens')
-        if (l_screens) {
-            setScreens(JSON.parse(l_screens))
+        const { data, error } = await supabase.from('screens').select().eq('menu_id', index)
+        if (error) {
+            setError(error.message)
         } else {
-            const { data, error } = await supabase.from('screens').select().eq('menu_id', index)
-            if (error) {
-                setError(error.message)
-            } else {
-                setScreens(data as Screen[])
-                sessionStorage.setItem('screens', JSON.stringify(data))
-            }
+            setScreens(data as Screen[])
         }
-    };
+    }
+
 
     const fetchMenu = async () => {
         const l_menuList = sessionStorage.getItem('menu_list')

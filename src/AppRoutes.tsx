@@ -1,24 +1,33 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import { hasPermission } from "./utils/permissions";
 import { useAuth } from "./providers/AuthProvider";
-import Dashboard from "./components/pages/Dashboard";
 import Analytics from "./components/pages/Analytics";
 import Overview from "./components/pages/Overview";
 import Performance from "./components/pages/Performance";
 import Settings from "./components/Settings";
+import { Projects } from "./components/Projects";
+import ProjectList from "./components/pages/ProjectsList";
+import Dashboard from "./components/Dashboard";
 
 const AppRoutes = () => {
   const { user } = useAuth()
   const role = user?.role
 
+  // console.log(`Role: ${role}`);
+  console.log(`Has permission for /projects: ${hasPermission(role, '/projects')}`);
+
+
   return (
     <Router>
       <Routes>
         <Route path="/" element={hasPermission(role, '/dashboard') ? <Dashboard /> : <Navigate to="/" />} />
-        <Route path="dashboard" element={hasPermission(role, '/dashboard') ? <Dashboard /> : <Navigate to="/" />}>
-          <Route index element={hasPermission(role, '/dashboard') ? <Overview /> : <Navigate to="/" />}/>
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route index element={hasPermission(role, '/dashboard') ? <Overview /> : <Navigate to="/" />} />
           <Route path="analytics" element={hasPermission(role, '/dashboard/analytics') ? <Analytics /> : <Navigate to="/" />} />
           <Route path="performance" element={hasPermission(role, '/dashboard/performance') ? <Performance /> : <Navigate to="/" />} />
+        </Route>
+        <Route path="projects" element={<Dashboard />} >
+          <Route index element={hasPermission(role, '/projects') ? <ProjectList /> : <Navigate to="/" />} />
         </Route>
         <Route path="settings" element={hasPermission(role, '/settings') ? <Settings /> : <Navigate to="/" />} />
       </Routes>

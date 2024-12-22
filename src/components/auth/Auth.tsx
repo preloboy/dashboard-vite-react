@@ -8,20 +8,25 @@ import { useDatabase } from "../../providers/DataProvider";
 
 const Auth = () => {
   const { user, setUser } = useAuth();
-  const { fetchScreens, fetchMenu } = useDatabase();
+  const { index, fetchScreens, fetchMenu } = useDatabase();
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
         setUser(session.user);
         fetchMenu();
-        fetchScreens('1');
+        fetchScreens(index);
       } else {
         setUser(null);
       }
     })
     return () => { authListener.subscription.unsubscribe; };
   }, [setUser])
+
+  useEffect(() => {
+    console.log('Auth Entry', index);
+    
+  }, [])
 
   return (
     <div>{user ? <AppRoutes /> : <Login />}</div>
