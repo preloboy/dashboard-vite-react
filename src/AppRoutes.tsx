@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import { hasPermission } from "./utils/permissions";
 import { useAuth } from "./providers/AuthProvider";
-import Analytics from "./components/pages/Analytics";
-import Overview from "./components/pages/Overview";
-import Performance from "./components/pages/Performance";
-import Settings from "./components/Settings";
-import { Projects } from "./components/Projects";
-import ProjectList from "./components/pages/ProjectsList";
-import Dashboard from "./components/Dashboard";
+import Analytics from "./pages/dashboard/Analytics";
+import Overview from "./pages/dashboard/Overview";
+import Performance from "./pages/dashboard/Performance";
+import Settings from "./pages/Settings";
+import { Projects } from "./pages/projects/Projects";
+import ProjectList from "./pages/dashboard/ProjectsList";
+import { hasPermission } from "./components/permissions";
+import Dashboard from "./pages/dashboard/Dashboard";
 
 const AppRoutes = () => {
   const { user } = useAuth()

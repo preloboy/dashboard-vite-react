@@ -1,8 +1,8 @@
 import { useState } from "react";
 import React from "react";
-import { useAuth } from "../../../providers/AuthProvider";
+import { useAuth } from "../../providers/AuthProvider";
 import { AuthResponse, createClient } from "@supabase/supabase-js";
-import supabase from "../../../utils/supabase";
+import supabase from "../../utils/supabase";
 
 const Login = () => {
   const [email, setEmail] = useState("");

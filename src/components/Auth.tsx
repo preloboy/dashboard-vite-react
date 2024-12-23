@@ -1,10 +1,10 @@
 import { Session } from "@supabase/supabase-js";
-import AppRoutes from "../../AppRoutes";
-import { useAuth } from "../../providers/AuthProvider";
-import Login from "./components/Login";
-import supabase from "../../utils/supabase";
+import AppRoutes from "../AppRoutes";
+import { useAuth } from "../providers/AuthProvider";
+import Login from "../pages/auth/Login";
+import supabase from "../utils/supabase";
 import { useEffect } from "react";
-import { useDatabase } from "../../providers/DataProvider";
+import { useDatabase } from "../providers/DataProvider";
 
 const Auth = () => {
   const { user, setUser } = useAuth();
