@@ -18,7 +18,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="w-full bg-slate-750 text-white rounded-lg flex flex-row justify-end">
+    <div className="w-full bg-slate-750 text-white rounded-lg flex flex-row sm:justify-end justify-center flex-wrap">
       {menuList.map((item) => (
         <ul key={item.id} className="">
           <li
