@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { useAuth } from "../../providers/AuthProvider";
 import supabase from "../../utils/supabase";
-import { useDatabase } from "../../providers/DataProvider";
 import { Outlet } from "react-router";
-import Navbar from "../elements/Navbar";
-import Sidebar from "../elements/Sidebar";
+import Navbar from "../../components/elements/Navbar";
+import Sidebar from "../../components/elements/Sidebar";
+import { useDatabase } from "../../contexts/DataContext";
 
 
 const Dashboard = () => {

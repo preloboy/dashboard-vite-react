@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { Menu_List, Screen } from "../../Models/DataInterface";
-import { useDatabase } from "../../providers/DataProvider";
+import { Menu_List, Screen } from "../../types/DataInterface";
 import { useNavigate } from "react-router";
+import { useDatabase } from "../../contexts/DataContext";
 
 interface DashboardProps {
   menuList: Menu_List[];

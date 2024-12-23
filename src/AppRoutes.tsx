@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import { useAuth } from "./providers/AuthProvider";
 import Analytics from "./pages/dashboard/Analytics";
 import Overview from "./pages/dashboard/Overview";
 import Performance from "./pages/dashboard/Performance";
@@ -8,6 +7,7 @@ import { Projects } from "./pages/projects/Projects";
 import ProjectList from "./pages/dashboard/ProjectsList";
 import { hasPermission } from "./components/permissions";
 import Dashboard from "./pages/dashboard/Dashboard";
+import { useAuth } from "./contexts/AuthContext";
 
 const AppRoutes = () => {
   const { user } = useAuth()

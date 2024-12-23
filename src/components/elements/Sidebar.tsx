@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../providers/AuthProvider";
 import supabase from "../../utils/supabase";
-import { Menu_List, Screen } from "../../Models/DataInterface";
+import { Menu_List, Screen } from "../../types/DataInterface";
 import { useEffect, useState } from "react";
-import { useDatabase } from "../../providers/DataProvider";
+import { useAuth } from "../../contexts/AuthContext";
+import { useDatabase } from "../../contexts/DataContext";
 
 
 const Sidebar = () => {

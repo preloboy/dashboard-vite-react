@@ -1,6 +1,6 @@
-import { Screen } from "../Models/DataInterface";
-import { useDatabase } from "../providers/DataProvider";
-import { Role } from "../types/auth.type";
+import { useDatabase } from "../contexts/DataContext";
+import { Screen } from "../types/DataInterface";
+import { Role } from "../types/auth.types";
 
 
 export const hasPermission = (role: Role, page: string) => {
