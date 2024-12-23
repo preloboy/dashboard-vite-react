@@ -1,15 +1,9 @@
-import { useEffect, useState } from "react";
-import supabase from "../../utils/supabase";
 import { Outlet } from "react-router";
 import Navbar from "../../components/elements/Navbar";
 import Sidebar from "../../components/elements/Sidebar";
-import { useDatabase } from "../../contexts/DataContext";
 
 
 const Dashboard = () => {
-
-  const { index, fetchMenu, fetchScreens, menuList } = useDatabase()
-
 
   return (
     <div className="flex">
@@ -17,7 +11,7 @@ const Dashboard = () => {
         <Sidebar />
       </div>
       <div className="w-full">
-        <Navbar menuList={menuList} />
+        <Navbar />
         <div className="px-5 pt-5">
           <Outlet />
         </div>

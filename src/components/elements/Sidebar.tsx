@@ -27,37 +27,36 @@ const Sidebar = () => {
   }
 
   return (
-    <div className="h-screen min-w-48 bg-gray-100">
-      <h1 className="text-lg tracking-wide font-semibold cursor-pointer hover:bg-gray-700 hover:text-cyan-200 px-5 py-5">
+    <div className="h-full flex flex-col bg-slate-900 min-w-48 text-white rounded-lg">
+      <h1 className="text-lg tracking-wide font-semibold cursor-pointer hover:[text-shadow:_0_2px_5px_rgb(37_255_250_/_0.5)] hover:text-yellow-300 px-5 py-5 hover:font-normal">
         {title}
         <p>{user.email}</p>
         <p>{index}</p>
       </h1>
-      <div className=" flex flex-col">
-        <div className="">
-
+      <div className="flex-grow flex flex-col">
+        <div className="flex-grow">
           {screens.map((item) => (
             <ul key={item.id}>
               <li
                 onClick={() => goTo(item)}
-                className="cursor-pointer pl-5 py-2 hover:bg-gray-700 hover:text-cyan-200">
+                className="cursor-pointer mx-3 rounded-md px-3 py-2 hover:bg-gray-700 hover:text-cyan-200">
                 {item.screen_name}
               </li>
             </ul>
           ))}
         </div>
-        <div className="mt-96">
-          <ul>
+        <div className="">
+          <ul className="mb-3">
             <li
-              onClick={logout}
-              className="cursor-pointer pl-5 py-2 hover:bg-gray-700 hover:text-cyan-200"
-            >
-              Logout
-            </li>
-            <li
-              className="cursor-pointer pl-5 py-2 hover:bg-gray-700 hover:text-cyan-200"
+              className="cursor-pointer mx-3 rounded-md pl-3 py-2 hover:bg-gray-700 hover:text-cyan-200"
             >
               Settings
+            </li>
+            <li
+              onClick={logout}
+              className="cursor-pointer mx-3 rounded-md pl-3 py-2 hover:bg-gray-700 hover:text-cyan-200"
+            >
+              Logout
             </li>
           </ul>
         </div>
