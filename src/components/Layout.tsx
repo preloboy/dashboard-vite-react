@@ -1,8 +1,15 @@
 import { Outlet } from "react-router";
 import Navbar from "./elements/Navbar";
 import Sidebar from "./elements/Sidebar";
+import { useEffect } from "react";
+import { useDatabase } from "../contexts/DataContext";
 
 export const Layout = () => {
+
+    const { index, fetchScreens} = useDatabase()
+
+
+
     return (
         <div className="h-screen flex flex-row bg-gray-950 text-white">
             <div className="Sidebar h-screen px-2 py-2 sm:block hidden">

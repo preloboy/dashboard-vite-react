@@ -21,12 +21,18 @@ export const DatabaseProvider: React.FC<DatabaseProviderProps> = ({ children }) 
         // console.log("Index", index);
     }
 
-    const fetchScreens = async (index: string) => {
-        const { data, error } = await supabase.from('screens').select().eq('menu_id', index)
-        if (error) {
-            setError(error.message)
+    const fetchScreens = async () => {
+        const l_screens = sessionStorage.getItem('screens')
+        if (l_screens) {
+            setScreens(JSON.parse(l_screens))
         } else {
-            setScreens(data as Screen[])
+            const { data, error } = await supabase.from('screens').select()
+            if (error) {
+                setError(error.message)
+            } else {
+                setScreens(data as Screen[])
+                sessionStorage.setItem('screens', JSON.stringify(data))
+            }
         }
     }
 

@@ -11,7 +11,9 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
   const { user, setUser, setSession } = useAuth()
-  const { index, title, setIndex, screens } = useDatabase()
+  const { fetchScreens, index, title, screens } = useDatabase()
+
+  const items = screens.filter(item=> item.menu_id.toString()===index)
 
   const logout = async () => {
     await supabase.auth.signOut()
@@ -26,6 +28,10 @@ const Sidebar = () => {
     console.log("goTo() Test", item.path, item.menu_id);
   }
 
+  useEffect(() => {
+    // console.log('Sidebar Screens', screens);
+  }, [])
+
   return (
     <div className="h-full flex flex-col bg-slate-900 min-w-48 text-white rounded-lg">
       <h1 className="text-lg tracking-wide font-semibold cursor-pointer hover:[text-shadow:_0_2px_5px_rgb(37_255_250_/_0.5)] hover:text-yellow-300 px-5 py-5 hover:font-normal">
@@ -35,7 +41,7 @@ const Sidebar = () => {
       </h1>
       <div className="flex-grow flex flex-col">
         <div className="flex-grow">
-          {screens.map((item) => (
+          {items.map((item) => (
             <ul key={item.id}>
               <li
                 onClick={() => goTo(item)}

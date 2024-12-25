@@ -8,14 +8,14 @@ import { useDatabase } from "../contexts/DataContext";
 
 const Auth = () => {
   const { user, setUser } = useAuth();
-  const { index, fetchScreens, fetchMenu } = useDatabase();
+  const { fetchMenu, fetchScreens } = useDatabase();
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
       if (session) {
         setUser(session.user);
+        fetchScreens();
         fetchMenu();
-        fetchScreens(index);
       } else {
         setUser(null);
       }
@@ -24,8 +24,7 @@ const Auth = () => {
   }, [setUser])
 
   useEffect(() => {
-    console.log('Auth Entry', index);
-    
+  
   }, [])
 
   return (

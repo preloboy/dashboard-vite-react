@@ -4,10 +4,11 @@ import { Role } from "../types/auth.types";
 
 
 export const hasPermission = (role: Role, page: string) => {
-    const { screens } = useDatabase();  
+    const { screens } = useDatabase()
     // console.log(screens);
     
     const screen = screens.find((screen: Screen) => screen.path === page)
-    const value =  screen?.allowed_role.includes(role) ?? true;
+    const value = screen?.allowed_role.includes(role) ?? false;
+    // console.log(value, screen);
     return value
 }
