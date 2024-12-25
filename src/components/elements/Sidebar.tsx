@@ -10,10 +10,11 @@ const Sidebar = () => {
 
   const navigate = useNavigate();
 
-  const { user, setUser, setSession } = useAuth()
+  const { loading, setLoading, user, setUser, setSession } = useAuth()
   const { fetchScreens, index, title, screens } = useDatabase()
 
   const items = screens.filter(item=> item.menu_id.toString()===index)
+  
 
   const logout = async () => {
     await supabase.auth.signOut()
@@ -30,6 +31,9 @@ const Sidebar = () => {
 
   useEffect(() => {
     // console.log('Sidebar Screens', screens);
+    setTimeout(() => {
+      // setLoading(false)
+    }, 3000);
   }, [])
 
   return (

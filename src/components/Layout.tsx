@@ -3,12 +3,19 @@ import Navbar from "./elements/Navbar";
 import Sidebar from "./elements/Sidebar";
 import { useEffect } from "react";
 import { useDatabase } from "../contexts/DataContext";
+import { Loading } from "./elements/Loading";
+import { useAuth } from "../contexts/AuthContext";
 
 export const Layout = () => {
 
     const { index, fetchScreens} = useDatabase()
 
+    const { loading } = useAuth()
 
+    if (loading){
+        return(<Loading />)
+    }
+    
 
     return (
         <div className="h-screen flex flex-row bg-gray-950 text-white">

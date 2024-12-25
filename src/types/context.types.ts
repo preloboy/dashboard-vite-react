@@ -9,4 +9,6 @@ export interface AuthContextType {
   setUser: (user: any) => void;
   session: any;
   setSession: (session: any) => void;
+  loading : boolean;
+  setLoading : (loading:boolean) => void;
 }

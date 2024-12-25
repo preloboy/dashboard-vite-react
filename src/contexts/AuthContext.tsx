@@ -10,9 +10,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const [user, setUser] = useState<User | null>(null);
     const [session, setSession] = useState<Session | null>(null)
+    const [loading, setLoading] = useState<boolean>(false)
 
     return (
-        <AuthContext.Provider value={{ user, setUser, session, setSession }}>
+        <AuthContext.Provider value={{ user, setUser, session, setSession, loading, setLoading }}>
             {children}
         </AuthContext.Provider>
     );
