@@ -12,8 +12,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     const [session, setSession] = useState<Session | null>(null)
     const [loading, setLoading] = useState<boolean>(false)
 
+    const role = user?.role as string
+
     return (
-        <AuthContext.Provider value={{ user, setUser, session, setSession, loading, setLoading }}>
+        <AuthContext.Provider value={{ user, role, setUser, session, setSession, loading, setLoading }}>
             {children}
         </AuthContext.Provider>
     );

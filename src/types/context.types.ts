@@ -6,6 +6,7 @@ export interface AuthProviderProps {
 
 export interface AuthContextType {
   user: any;
+  role : string;
   setUser: (user: any) => void;
   session: any;
   setSession: (session: any) => void;

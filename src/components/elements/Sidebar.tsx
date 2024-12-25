@@ -10,11 +10,13 @@ const Sidebar = () => {
 
   const navigate = useNavigate();
 
-  const { loading, setLoading, user, setUser, setSession } = useAuth()
+  const { loading, setLoading, user,role, setUser, setSession } = useAuth()
   const { fetchScreens, index, title, screens } = useDatabase()
 
-  const items = screens.filter(item=> item.menu_id.toString()===index)
   
+
+  const items = screens.filter(screen => screen.menu_id.toString() === index)
+
 
   const logout = async () => {
     await supabase.auth.signOut()
@@ -45,14 +47,19 @@ const Sidebar = () => {
       </h1>
       <div className="flex-grow flex flex-col">
         <div className="flex-grow">
-          {items.map((item) => (
-            <ul key={item.id}>
-              <li
-                onClick={() => goTo(item)}
-                className="cursor-pointer mx-3 rounded-md px-3 py-2 hover:bg-gray-700 hover:text-cyan-200">
-                {item.screen_name}
-              </li>
-            </ul>
+          {items.map((item: Screen) => (
+            <>
+              {item.allowed_role.includes(role)
+                &&
+                <ul key={item.id}>
+                  <li
+                    onClick={() => goTo(item)}
+                    className="cursor-pointer mx-3 rounded-md px-3 py-2 hover:bg-gray-700 hover:text-cyan-200">
+                    {item.screen_name}
+                  </li>
+                </ul>
+              }
+            </>
           ))}
         </div>
         <div className="">

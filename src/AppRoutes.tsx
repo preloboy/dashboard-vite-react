@@ -7,6 +7,11 @@ import ProjectList from "./pages/dashboard/ProjectsList";
 import { hasPermission } from "./components/permissions";
 import { useAuth } from "./contexts/AuthContext";
 import { Layout } from "./components/Layout";
+import { Tasks } from "./pages/tasks/Tasks";
+import { Reports } from "./pages/reports/Reports";
+import { MonthlyReports } from "./pages/reports/MonthlyReport";
+import { QuaterlyReport } from "./pages/reports/QuaterlyReport";
+import { AnnualReport } from "./pages/reports/AnnualReport";
 
 const AppRoutes = () => {
   const { user } = useAuth()
@@ -27,6 +32,15 @@ const AppRoutes = () => {
         </Route>
         <Route path="projects" element={<Layout />} >
           <Route index element={hasPermission(role, '/projects') ? <ProjectList /> : <Navigate to="/" />} />
+        </Route>
+        <Route path="tasks" element={<Layout />} >
+          <Route index element={hasPermission(role, '/tasks') ? <Tasks /> : <Navigate to="/" />} />
+        </Route>
+        <Route path="reports" element={<Layout />} >
+          <Route index element={<Reports />} />
+          <Route path="monthly" element={hasPermission(role, '/reports/monthly') ? <MonthlyReports /> : <Navigate to="/" />} />
+          <Route path="quarterly" element={hasPermission(role, '/reports/quarterly') ? <QuaterlyReport /> : <Navigate to="/" />} />
+          <Route path="annual" element={hasPermission(role, '/reports/annual') ? <AnnualReport /> : <Navigate to="/" />} />
         </Route>
         <Route path="settings" element={hasPermission(role, '/settings') ? <Settings /> : <Navigate to="/" />} />
       </Routes>

@@ -3,7 +3,7 @@ import Navbar from "./elements/Navbar";
 import Sidebar from "./elements/Sidebar";
 import { useEffect } from "react";
 import { useDatabase } from "../contexts/DataContext";
-import { Loading } from "./elements/Loading";
+import { Loading } from "./Loading";
 import { useAuth } from "../contexts/AuthContext";
 
 export const Layout = () => {

@@ -3,7 +3,7 @@ import React from "react";
 import { AuthResponse, createClient } from "@supabase/supabase-js";
 import supabase from "../../utils/supabase";
 import { useAuth } from "../../contexts/AuthContext";
-import { Loading } from "../../components/elements/Loading";
+import { Loading } from "../../components/Loading";
 
 const Login = () => {
   const [email, setEmail] = useState("");
