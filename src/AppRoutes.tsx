@@ -13,7 +13,7 @@ const AppRoutes = () => {
   const role = user?.role
 
   // console.log(`Role: ${role}`);
-  console.log(`Has permission for /projects: ${hasPermission(role, '/projects')}`);
+  // console.log(`Has permission for /projects: ${hasPermission(role, '/projects')}`);
 
 
   return (
